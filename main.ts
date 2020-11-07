@@ -1,20 +1,14 @@
-let Light = 0
 input.onButtonPressed(Button.A, function () {
     music.rest(music.beat(BeatFraction.Sixteenth))
-    Light = input.lightLevel()
-    if (Light < 100) {
-        serial.writeLine("お客さんが来ました。")
-        LED()
-        Music()
-    } else {
-        serial.writeLine("退店しました。")
-    }
+    serial.writeLine("お客さんが来ました。")
+    Music()
 })
-// 音鳴らす処理
+// 入店
 function Music () {
     let half = BeatFraction.Half;
 let whole = BeatFraction.Whole;
-pins.analogSetPitchVolume(10)
+basic.showIcon(IconNames.Happy)
+    pins.analogSetPitchVolume(10)
     music.playTone(440, music.beat(half))
     music.playTone(349, music.beat(half))
     music.playTone(262, music.beat(half))
@@ -27,8 +21,12 @@ pins.analogSetPitchVolume(10)
     music.playTone(392, music.beat(half))
     music.playTone(262, music.beat(half))
     music.playTone(349, music.beat(whole))
+    basic.clearScreen()
 }
-// 光らせる処理
-function LED () {
-    basic.showIcon(IconNames.Happy)
-}
+input.onButtonPressed(Button.B, function () {
+    basic.showIcon(IconNames.Sad)
+    serial.writeLine("お客さんが退店しました。")
+    basic.clearScreen()
+})
+let Light = 0
+let Count = true
