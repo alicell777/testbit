@@ -13,8 +13,8 @@ input.onButtonPressed(Button.A, function () {
 // 音鳴らす処理
 function Music () {
     let half = BeatFraction.Half;
-    let whole = BeatFraction.Whole;
-    pins.analogSetPitchVolume(10)
+let whole = BeatFraction.Whole;
+pins.analogSetPitchVolume(10)
     music.playTone(440, music.beat(half))
     music.playTone(349, music.beat(half))
     music.playTone(262, music.beat(half))
