@@ -6,8 +6,8 @@ input.onButtonPressed(Button.A, function () {
 // 入店
 function Music () {
     let half = BeatFraction.Half;
-let whole = BeatFraction.Whole;
-basic.showIcon(IconNames.Happy)
+    let whole = BeatFraction.Whole;
+    basic.showIcon(IconNames.Happy)
     pins.analogSetPitchVolume(10)
     music.playTone(440, music.beat(half))
     music.playTone(349, music.beat(half))
